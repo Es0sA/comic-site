@@ -5,10 +5,12 @@
    anything that needs to stay legible at small sizes. */
 
 :root {
-  --heartline-pink: 232, 62, 140;
+  /* Matches the store's existing neon-pink accent (#FF00E8) and dark plum
+     background (#4D1F49) already set up in the color scheme settings. */
+  --heartline-pink: 255, 0, 232;
   --heartline-magenta: 199, 42, 189;
-  --heartline-purple: 91, 42, 163;
-  --heartline-ink: 10, 8, 16;
+  --heartline-purple: 77, 31, 73;
+  --heartline-ink: 18, 18, 18;
 
   --font-heading-family: 'Metal Mania', cursive;
   --font-heading-style: normal;

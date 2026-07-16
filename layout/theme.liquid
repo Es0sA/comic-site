@@ -15,6 +15,18 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;1,700&display=swap"
+      rel="stylesheet"
+    >
+    {% comment %}
+      Heartline brand type: Metal Mania (spiky metal/graffiti display face, matches the
+      hand-drawn flame-skull logotype) for big display headings, Barlow Condensed for
+      section titles/nav where Metal Mania would hurt legibility.
+    {% endcomment %}
+
     <title>
       {{ page_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
@@ -252,6 +264,7 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'heartline-brand.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
