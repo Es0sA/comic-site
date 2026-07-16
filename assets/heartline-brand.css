@@ -1,0 +1,77 @@
+/* Heartline Comics brand layer — sits on top of Dawn's base.css.
+   Palette: neon magenta/pink flame over near-black, matching the
+   flame-skull "Menace" mascot art. Metal Mania for big display type
+   (mirrors the hand-drawn flame-skull logotype), Barlow Condensed for
+   anything that needs to stay legible at small sizes. */
+
+:root {
+  --heartline-pink: 232, 62, 140;
+  --heartline-magenta: 199, 42, 189;
+  --heartline-purple: 91, 42, 163;
+  --heartline-ink: 10, 8, 16;
+
+  --font-heading-family: 'Metal Mania', cursive;
+  --font-heading-style: normal;
+  --font-heading-weight: 400;
+  --font-heading-scale: 1.15;
+}
+
+body {
+  font-family: 'Barlow Condensed', var(--font-body-family), sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Metal Mania has no bold/italic cuts; keep weight/style stable everywhere
+   so the font-face swap in theme.liquid never falls back awkwardly. */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.hero__heading, .banner__heading {
+  font-style: normal !important;
+  font-weight: 400 !important;
+}
+
+.heartline-glow {
+  text-shadow:
+    0 0 6px rgba(var(--heartline-pink), 0.85),
+    0 0 18px rgba(var(--heartline-magenta), 0.55),
+    0 0 40px rgba(var(--heartline-purple), 0.35);
+}
+
+/* Sale/CTA accents pick up the flame palette instead of Dawn's default */
+.button--secondary:hover,
+a.link:hover {
+  color: rgb(var(--heartline-pink));
+}
+
+::selection {
+  background: rgb(var(--heartline-magenta));
+  color: #fff;
+}
+
+.heartline-format-badges {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0.8rem 0 1.2rem;
+}
+
+.heartline-format-badge {
+  font-family: 'Barlow Condensed', var(--font-body-family), sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--heartline-pink), 0.6);
+  color: rgb(var(--heartline-pink));
+}
+
+.heartline-format-badge--digital {
+  border-color: rgba(var(--heartline-purple), 0.6);
+  color: rgb(var(--heartline-purple));
+}

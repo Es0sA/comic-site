@@ -1,0 +1,27 @@
+{% comment %}
+  Renders a small format pill (Physical / Digital) based on product tags.
+  Tag the product "physical" and/or "digital" in Shopify admin to surface it here.
+{% endcomment %}
+{%- liquid
+  assign show_physical = false
+  assign show_digital = false
+  for tag in product.tags
+    assign tag_down = tag | downcase
+    if tag_down == 'physical'
+      assign show_physical = true
+    endif
+    if tag_down == 'digital'
+      assign show_digital = true
+    endif
+  endfor
+-%}
+{%- if show_physical or show_digital -%}
+  <div class="heartline-format-badges">
+    {%- if show_physical -%}
+      <span class="heartline-format-badge heartline-format-badge--physical">Physical</span>
+    {%- endif -%}
+    {%- if show_digital -%}
+      <span class="heartline-format-badge heartline-format-badge--digital">Digital</span>
+    {%- endif -%}
+  </div>
+{%- endif -%}

@@ -6,70 +6,226 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "heading": "Join the Menace Army",
+            "heading_size": "hxl"
           }
         },
-        "button": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Comics, apparel, and cursed collectibles from the Heartline universe.",
+            "text_style": "subtitle"
+          }
+        },
+        "buttons": {
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop all",
             "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_style_secondary_1": false,
+            "button_label_2": "Latest issue",
+            "button_link_2": "shopify://collections/comics",
+            "button_style_secondary_2": true
           }
         }
       },
-      "block_order": [
-        "heading",
-        "button"
-      ],
+      "block_order": ["heading", "text", "buttons"],
       "settings": {
-        "image_overlay_opacity": 40,
+        "image_overlay_opacity": 50,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
+        "desktop_content_position": "middle-center",
         "show_text_box": false,
         "image_behavior": "none",
         "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
+        "color_scheme": "scheme-4",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
         "show_text_below": false
       }
     },
-    "featured_collection": {
+    "featured_collection_comics": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
+        "title": "Latest Comic Releases",
+        "heading_size": "h1",
+        "description": "Physical and digital issues, fresh from the press.",
+        "show_description": true,
         "description_style": "body",
-        "collection": "all",
+        "collection": "",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-4",
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "swipe_on_mobile": true,
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "meet_the_menace": {
+      "type": "multicolumn",
+      "blocks": {
+        "menace": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "title": "Menace",
+            "text": "<p>Front man of the family. Sharp tongue, sharper fists, and a temper that shows up before he does.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "heartline": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "title": "Heartline",
+            "text": "<p>Runs the crew. Spray paint, steel-toe boots, and no patience for anyone who slows her down.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "ember": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "title": "Ember",
+            "text": "<p>The newest menace on the block. Small, loud, and already causing trouble.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": ["menace", "heartline", "ember"],
+      "settings": {
+        "title": "Meet the Menace Family",
+        "heading_size": "h1",
+        "image_width": "half",
+        "image_ratio": "square",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "scheme-3",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "featured_collection_merch": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Merch & Apparel",
+        "heading_size": "h1",
+        "description": "Wearable proof you run with the Menace army.",
+        "show_description": true,
+        "description_style": "body",
+        "collection": "",
         "products_to_show": 8,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
+        "enable_desktop_slider": true,
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "brand_story": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Heartline Comics",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Independent comics built around one flame-headed, skull-faced family and the alley they call home. Dark stories, bright pink flames, no apologies.</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Read our story",
+            "button_link": "",
+            "button_style_secondary": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": false,
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "email_signup": {
+      "type": "email-signup-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get exclusive alerts",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "New issues, drop dates, and Menace-only deals — straight to your inbox.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": ["heading", "paragraph"],
+      "settings": {
+        "show_background_image": false,
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "scheme-3",
+        "mobile_content_alignment": "center",
+        "show_text_below": true
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection_comics",
+    "meet_the_menace",
+    "featured_collection_merch",
+    "brand_story",
+    "email_signup"
   ]
 }
