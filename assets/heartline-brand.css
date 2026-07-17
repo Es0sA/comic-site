@@ -1,16 +1,14 @@
-/* Heartline Comics brand layer — sits on top of Dawn's base.css.
-   Palette: neon magenta/pink flame over near-black, matching the
-   flame-skull "Menace" mascot art. Metal Mania for big display type
-   (mirrors the hand-drawn flame-skull logotype), Barlow Condensed for
-   anything that needs to stay legible at small sizes. */
+/* Heartline Comics — comic-panel brand system on top of Dawn's base.css.
+   Not a color skin: this changes section geometry (jagged panel gutters,
+   tilted panels, ink-outline type, halftone texture, stamp badges) so the
+   site reads as a comic page, not a re-themed Dawn store. */
 
 :root {
-  /* Matches the store's existing neon-pink accent (#FF00E8) and dark plum
-     background (#4D1F49) already set up in the color scheme settings. */
   --heartline-pink: 255, 0, 232;
   --heartline-magenta: 199, 42, 189;
   --heartline-purple: 77, 31, 73;
-  --heartline-ink: 18, 18, 18;
+  --heartline-ink: 10, 10, 10;
+  --heartline-paper: 245, 240, 232;
 
   --font-heading-family: 'Metal Mania', cursive;
   --font-heading-style: normal;
@@ -20,6 +18,10 @@
 
 body {
   font-family: 'Barlow Condensed', var(--font-body-family), sans-serif;
+  background-color: rgb(var(--heartline-ink));
+  background-image:
+    radial-gradient(rgba(var(--heartline-pink), 0.16) 1px, transparent 1.4px);
+  background-size: 14px 14px;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -28,13 +30,25 @@ h1, h2, h3, h4, h5, h6,
   text-transform: uppercase;
 }
 
-/* Metal Mania has no bold/italic cuts; keep weight/style stable everywhere
-   so the font-face swap in theme.liquid never falls back awkwardly. */
+/* Metal Mania has no bold/italic cuts; lock weight/style so the font-face
+   swap in theme.liquid never falls back awkwardly. */
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6,
 .hero__heading, .banner__heading {
   font-style: normal !important;
   font-weight: 400 !important;
+}
+
+/* Ink-outline "pop" heading treatment instead of a soft glow */
+.banner__heading,
+.collection-list-title,
+.multicolumn > .page-width > .title-wrapper-with-link .title,
+.collection__title .title,
+.rich-text__heading {
+  -webkit-text-stroke: 1.5px rgb(var(--heartline-ink));
+  text-shadow:
+    3px 3px 0 rgb(var(--heartline-ink)),
+    6px 6px 0 rgba(var(--heartline-pink), 0.9);
 }
 
 .heartline-glow {
@@ -44,20 +58,134 @@ h1, h2, h3, h4, h5, h6,
     0 0 40px rgba(var(--heartline-purple), 0.35);
 }
 
-/* Sale/CTA accents pick up the flame palette instead of Dawn's default */
-.button--secondary:hover,
-a.link:hover {
-  color: rgb(var(--heartline-pink));
-}
-
 ::selection {
   background: rgb(var(--heartline-magenta));
   color: #fff;
 }
 
+/* ---------------------------------------------------------------------
+   Panel gutters: jagged black zigzag tearing every homepage section away
+   from the next, like the gutter between comic panels.
+   --------------------------------------------------------------------- */
+.shopify-section {
+  position: relative;
+}
+
+.shopify-section + .shopify-section {
+  margin-top: 22px;
+}
+
+.shopify-section + .shopify-section::before {
+  content: '';
+  position: absolute;
+  top: -22px;
+  left: 0;
+  right: 0;
+  height: 22px;
+  z-index: 3;
+  background:
+    linear-gradient(135deg, rgb(var(--heartline-ink)) 25%, transparent 25%) -11px 0 / 22px 22px repeat-x,
+    linear-gradient(225deg, rgb(var(--heartline-ink)) 25%, transparent 25%) -11px 0 / 22px 22px repeat-x;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------
+   Panel-ify content blocks: heavy ink borders + hard offset shadow
+   instead of soft cards, mimicking inked comic panel frames.
+   --------------------------------------------------------------------- */
+.banner__box {
+  border: 3px solid rgb(var(--heartline-ink));
+  box-shadow: 10px 10px 0 rgba(var(--heartline-pink), 0.95);
+}
+
+.card,
+.multicolumn-card,
+.collection-list-wrapper .card {
+  border: 3px solid rgb(var(--heartline-ink)) !important;
+  box-shadow: 7px 7px 0 rgb(var(--heartline-ink));
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover,
+.multicolumn-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 10px 10px 0 rgba(var(--heartline-pink), 0.9);
+}
+
+/* Tilted trading-card panels: alternate rotation per item, straighten on
+   hover, so grids read as scattered comic panels instead of a neat table. */
+.multicolumn-list__item:nth-child(odd) .multicolumn-card {
+  transform: rotate(-2.5deg);
+}
+
+.multicolumn-list__item:nth-child(even) .multicolumn-card {
+  transform: rotate(2.5deg);
+}
+
+.multicolumn-list__item .multicolumn-card:hover {
+  transform: rotate(0deg) translateY(-4px);
+}
+
+.collection-list__item:nth-child(odd) .card,
+.grid__item:nth-child(odd) .card-wrapper .card {
+  transform: rotate(-1.4deg);
+}
+
+.collection-list__item:nth-child(even) .card,
+.grid__item:nth-child(even) .card-wrapper .card {
+  transform: rotate(1.4deg);
+}
+
+.collection-list__item .card:hover,
+.grid__item .card-wrapper .card:hover {
+  transform: rotate(0deg) translate(-3px, -3px);
+}
+
+/* Asymmetric "comic page" category grid: first block reads as a big splash
+   panel, the rest as smaller stacked panels beside it. */
+@media screen and (min-width: 750px) {
+  #shopify-section-shop_by_category .collection-list {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 2rem;
+  }
+
+  #shopify-section-shop_by_category .collection-list__item:first-child {
+    grid-row: span 2;
+  }
+}
+
+/* Chunky ink buttons instead of Dawn's pill/rounded buttons */
+.button,
+button.button,
+a.button {
+  border-radius: 0;
+  border: 3px solid rgb(var(--heartline-ink));
+  box-shadow: 5px 5px 0 rgb(var(--heartline-ink));
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.button:hover,
+button.button:hover,
+a.button:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 rgba(var(--heartline-pink), 0.9);
+}
+
+.button--secondary:hover,
+a.link:hover {
+  color: rgb(var(--heartline-pink));
+}
+
+/* ---------------------------------------------------------------------
+   Format badges: comic-ink "stamp" instead of a soft pill.
+   --------------------------------------------------------------------- */
 .heartline-format-badges {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.8rem;
   margin: 0.8rem 0 1.2rem;
 }
 
@@ -67,13 +195,22 @@ a.link:hover {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 0.4rem 1.2rem;
-  border-radius: 999px;
-  border: 1px solid rgba(var(--heartline-pink), 0.6);
-  color: rgb(var(--heartline-pink));
+  padding: 0.35rem 1.1rem;
+  border-radius: 0;
+  border: 2.5px solid rgb(var(--heartline-ink));
+  background: rgb(var(--heartline-paper));
+  color: rgb(var(--heartline-ink));
+  transform: rotate(-4deg);
+  box-shadow: 3px 3px 0 rgb(var(--heartline-ink));
+}
+
+.heartline-format-badge--physical {
+  background: rgb(var(--heartline-pink));
+  color: rgb(var(--heartline-ink));
 }
 
 .heartline-format-badge--digital {
-  border-color: rgba(var(--heartline-purple), 0.6);
-  color: rgb(var(--heartline-purple));
+  transform: rotate(3deg);
+  background: rgb(var(--heartline-purple));
+  color: #fff;
 }
