@@ -20,7 +20,6 @@
 
 body {
   font-family: 'Barlow Condensed', var(--font-body-family), sans-serif;
-  background: rgb(var(--heartline-ink));
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -64,10 +63,9 @@ h1, h2, h3, h4, h5, h6,
    --------------------------------------------------------------------- */
 .card,
 .multicolumn-card {
-  border: 1px solid rgba(var(--heartline-line), 0.08) !important;
+  border: 1px solid rgba(var(--heartline-line), 0.12) !important;
   border-radius: 14px !important;
   overflow: hidden;
-  background: rgb(var(--heartline-surface));
   box-shadow: none !important;
   transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
 }
@@ -169,17 +167,9 @@ a.link:hover {
    HEADER — slim sticky glass bar instead of a solid slab.
    ========================================================================= */
 .header-wrapper {
-  background: rgba(var(--heartline-ink), 0.75) !important;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(var(--heartline-line), 0.08) !important;
-}
-
-.header-wrapper,
-.header-wrapper a,
-.header-wrapper .header__icon,
-.header-wrapper summary {
-  color: rgb(245, 240, 232);
 }
 
 .header__inline-menu .list-menu__item,
@@ -203,7 +193,6 @@ a.link:hover {
    FOOTER — flat dark ground, clean column rhythm, no texture.
    ========================================================================= */
 .footer {
-  background: rgb(var(--heartline-ink)) !important;
   border-top: 1px solid rgba(var(--heartline-line), 0.08);
 }
 
