@@ -214,3 +214,129 @@ a.link:hover {
   background: rgb(var(--heartline-purple));
   color: #fff;
 }
+
+/* =========================================================================
+   HEADER — solid ink bar with a torn zigzag bottom edge instead of Dawn's
+   thin hairline. This is the one element on every single page, so it does
+   more to kill the "generic Shopify" read than any homepage section.
+   ========================================================================= */
+.header-wrapper {
+  background: rgb(var(--heartline-ink)) !important;
+  border-bottom: none !important;
+  position: relative;
+  padding-bottom: 14px;
+}
+
+.header-wrapper::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 14px;
+  z-index: 4;
+  background:
+    linear-gradient(135deg, rgb(var(--heartline-ink)) 25%, transparent 25%) -7px 0 / 14px 14px repeat-x,
+    linear-gradient(225deg, rgb(var(--heartline-ink)) 25%, transparent 25%) -7px 0 / 14px 14px repeat-x;
+}
+
+.header-wrapper,
+.header-wrapper a,
+.header-wrapper .header__icon,
+.header-wrapper summary {
+  color: rgb(var(--heartline-paper));
+}
+
+.header__heading-logo-wrapper {
+  filter: drop-shadow(4px 4px 0 rgba(var(--heartline-pink), 0.9));
+}
+
+.header__inline-menu .list-menu__item,
+.header__menu-item {
+  font-family: 'Barlow Condensed', var(--font-body-family), sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.header__inline-menu .list-menu__item:hover {
+  color: rgb(var(--heartline-pink));
+  text-shadow: 0 0 10px rgba(var(--heartline-pink), 0.7);
+}
+
+.header__icon--cart .cart-count-bubble {
+  background: rgb(var(--heartline-pink));
+  color: rgb(var(--heartline-ink));
+  border: 2px solid rgb(var(--heartline-ink));
+  font-weight: 700;
+}
+
+/* =========================================================================
+   FOOTER — torn panel edge at the top, halftone dark ground, ink-bordered
+   blocks and a "ticket stub" newsletter block instead of Dawn's plain
+   multi-column footer.
+   ========================================================================= */
+.footer {
+  background: rgb(var(--heartline-ink)) !important;
+  background-image: radial-gradient(rgba(var(--heartline-pink), 0.14) 1px, transparent 1.4px) !important;
+  background-size: 14px 14px !important;
+  position: relative;
+  padding-top: 28px !important;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 18px;
+  transform: translateY(-100%);
+  background:
+    linear-gradient(135deg, rgb(var(--heartline-ink)) 25%, transparent 25%) -9px 0 / 18px 18px repeat-x,
+    linear-gradient(225deg, rgb(var(--heartline-ink)) 25%, transparent 25%) -9px 0 / 18px 18px repeat-x;
+}
+
+.footer-block__heading {
+  -webkit-text-stroke: 1px rgb(var(--heartline-ink));
+  text-shadow: 2px 2px 0 rgba(var(--heartline-pink), 0.85);
+}
+
+.footer-block--newsletter {
+  border: 2px dashed rgba(var(--heartline-paper), 0.5);
+  padding: 1.4rem;
+}
+
+/* =========================================================================
+   CART DRAWER / NOTIFICATION — ink panel instead of a soft white sheet.
+   ========================================================================= */
+.cart-drawer .drawer__inner {
+  border-left: 3px solid rgb(var(--heartline-ink));
+  box-shadow: -10px 0 0 rgba(var(--heartline-pink), 0.4);
+}
+
+.cart-notification {
+  border: 3px solid rgb(var(--heartline-ink)) !important;
+  box-shadow: 8px 8px 0 rgba(var(--heartline-pink), 0.9) !important;
+}
+
+/* =========================================================================
+   PRODUCT GALLERY — stacked, slightly tilted panel thumbnails instead of a
+   flat aligned grid.
+   ========================================================================= */
+.product__media-list .product-media-container,
+.product__media-item .product-media-container {
+  border: 3px solid rgb(var(--heartline-ink));
+}
+
+.thumbnail-list__item:nth-child(odd) .product-media-container {
+  transform: rotate(-1.5deg);
+}
+
+.thumbnail-list__item:nth-child(even) .product-media-container {
+  transform: rotate(1.5deg);
+}
+
+.thumbnail-list__item .product-media-container:hover {
+  transform: rotate(0deg);
+}
