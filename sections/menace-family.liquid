@@ -1,0 +1,83 @@
+{{ 'component-menace-family.css' | asset_url | stylesheet_tag }}
+
+<div class="menace-family color-{{ section.settings.color_scheme }} gradient">
+  <div class="menace-family__inner page-width">
+    {%- if section.settings.title != blank -%}
+      <h2 class="menace-family__title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+
+    <div class="menace-family__grid">
+      {%- for block in section.blocks -%}
+        <div class="menace-family__card" {{ block.shopify_attributes }}>
+          <div class="menace-family__portrait">
+            <img
+              src="{{ block.settings.image_file | asset_url }}"
+              alt="{{ block.settings.name | escape }}"
+              width="900"
+              height="900"
+              loading="lazy"
+            >
+          </div>
+          <h3 class="menace-family__name">{{ block.settings.name }}</h3>
+          <div class="menace-family__bio">{{ block.settings.bio }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Menace family",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Meet the Menace Family"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "inverse"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "member",
+      "name": "Family member",
+      "settings": [
+        {
+          "type": "text",
+          "id": "image_file",
+          "label": "Asset filename",
+          "info": "Filename of an image already in the theme's assets folder (e.g. heartline-character-menace.jpg)."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "richtext",
+          "id": "bio",
+          "label": "Bio"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Menace family",
+      "blocks": [
+        { "type": "member" },
+        { "type": "member" },
+        { "type": "member" }
+      ]
+    }
+  ]
+}
+{% endschema %}
