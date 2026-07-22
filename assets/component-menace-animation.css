@@ -1,0 +1,88 @@
+.menace-animation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+  padding: 3rem 0;
+}
+
+@media screen and (min-width: 750px) {
+  .menace-animation-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+}
+
+.menace-animation-teaser__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 749px) {
+  .menace-animation-teaser__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+menace-video-facade {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.04);
+  transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.25s ease;
+}
+
+menace-video-facade:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 0, 232, 0.4);
+}
+
+menace-video-facade.menace-video-facade--placeholder {
+  cursor: default;
+  opacity: 0.5;
+}
+
+menace-video-facade img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+menace-video-facade__iframe,
+.menace-video-facade__iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.menace-video-facade__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menace-video-facade__play svg {
+  width: 3.6rem;
+  height: 3.6rem;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+}
+
+.menace-video-facade__title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem 1.2rem;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.75));
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.4rem;
+}

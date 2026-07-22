@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "gallery": {
+      "type": "menace-animation-gallery",
+      "settings": {
+        "title": "The Animations",
+        "description": "<p>Character fight scenes and everything in between.</p>",
+        "color_scheme": "accent-1"
+      },
+      "blocks": {
+        "clip1": { "type": "clip", "settings": { "title": "Animation 1" } },
+        "clip2": { "type": "clip", "settings": { "title": "Animation 2" } },
+        "clip3": { "type": "clip", "settings": { "title": "Animation 3" } },
+        "clip4": { "type": "clip", "settings": { "title": "Animation 4" } },
+        "clip5": { "type": "clip", "settings": { "title": "Animation 5" } },
+        "clip6": { "type": "clip", "settings": { "title": "Animation 6" } },
+        "clip7": { "type": "clip", "settings": { "title": "Animation 7" } },
+        "clip8": { "type": "clip", "settings": { "title": "Animation 8" } }
+      },
+      "block_order": ["clip1", "clip2", "clip3", "clip4", "clip5", "clip6", "clip7", "clip8"]
+    }
+  },
+  "order": ["gallery"]
+}

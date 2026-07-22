@@ -1,0 +1,36 @@
+.menace-shelf {
+  padding: 3.2rem 0;
+}
+
+.menace-shelf__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.8rem;
+}
+
+.menace-shelf__title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin: 0;
+}
+
+.menace-shelf__view-all {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.menace-shelf__list {
+  gap: 1.4rem;
+}
+
+.menace-shelf__item {
+  width: 220px;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .menace-shelf__item {
+    width: 160px;
+  }
+}

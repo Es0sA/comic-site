@@ -1,0 +1,108 @@
+{{ 'component-menace-animation.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'component-menace-animation.js' | asset_url }}" defer="defer"></script>
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width menace-shelf__header" style="padding-top: 3rem;">
+    {%- if section.settings.title != blank -%}
+      <h2 class="menace-shelf__title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+  </div>
+
+  <div class="page-width">
+    <div class="menace-animation-teaser__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.settings.youtube_id != blank -%}
+          <menace-video-facade
+            data-video-id="{{ block.settings.youtube_id }}"
+            data-title="{{ block.settings.title | escape }}"
+            {{ block.shopify_attributes }}
+          >
+            <img
+              src="https://img.youtube.com/vi/{{ block.settings.youtube_id }}/hqdefault.jpg"
+              alt="{{ block.settings.title | escape }}"
+              loading="lazy"
+              width="480"
+              height="360"
+            >
+            <span class="menace-video-facade__play" aria-hidden="true">
+              {% render 'icon-play' %}
+            </span>
+            {%- if block.settings.title != blank -%}
+              <span class="menace-video-facade__title">{{ block.settings.title }}</span>
+            {%- endif -%}
+          </menace-video-facade>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.button_label != blank -%}
+      <div class="center" style="padding-bottom: 3rem;">
+        <a href="{{ section.settings.button_link | default: '/pages/animations' }}" class="button button--primary">
+          {{ section.settings.button_label }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Menace animation teaser",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Watch the Menace come to life"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Watch all the animations"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link",
+      "info": "Link to the full animation gallery page."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "background-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "clip",
+      "name": "Animation clip",
+      "settings": [
+        {
+          "type": "text",
+          "id": "youtube_id",
+          "label": "YouTube video ID"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Menace animation teaser",
+      "blocks": [
+        { "type": "clip", "settings": { "title": "Animation 1" } },
+        { "type": "clip", "settings": { "title": "Animation 2" } },
+        { "type": "clip", "settings": { "title": "Animation 3" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

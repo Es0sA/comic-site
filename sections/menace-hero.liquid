@@ -2,14 +2,28 @@
 
 <div class="menace-hero color-{{ section.settings.color_scheme }} gradient">
   <div class="menace-hero__media">
-    <img
-      src="{{ 'heartline-hero-menace.jpg' | asset_url }}"
-      alt="{{ section.settings.heading | strip_html | escape }}"
-      width="1440"
-      height="1920"
-      loading="eager"
-      fetchpriority="high"
-    >
+    {%- if section.settings.video != blank -%}
+      {{
+        section.settings.video
+        | video_tag:
+          image_size: '1100x',
+          autoplay: true,
+          loop: true,
+          muted: true,
+          controls: false,
+          playsinline: true,
+          class: 'menace-hero__video'
+      }}
+    {%- else -%}
+      <img
+        src="{{ 'heartline-hero-menace.jpg' | asset_url }}"
+        alt="{{ section.settings.heading | strip_html | escape }}"
+        width="1440"
+        height="1920"
+        loading="eager"
+        fetchpriority="high"
+      >
+    {%- endif -%}
   </div>
   <div class="menace-hero__content page-width">
     <div class="menace-hero__box">
@@ -38,6 +52,12 @@
   "tag": "section",
   "class": "section",
   "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Background video",
+      "info": "Plays muted and looped behind the heading, on desktop and mobile. Leave blank to use the static character image instead."
+    },
     {
       "type": "text",
       "id": "heading",

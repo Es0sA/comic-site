@@ -1,0 +1,104 @@
+{{ 'component-menace-animation.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'component-menace-animation.js' | asset_url }}" defer="defer"></script>
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <h1 class="menace-shelf__title">{{ section.settings.title }}</h1>
+    {%- endif -%}
+    {%- if section.settings.description != blank -%}
+      <div class="rte">{{ section.settings.description }}</div>
+    {%- endif -%}
+
+    <div class="menace-animation-grid">
+      {%- for block in section.blocks -%}
+        {%- if block.settings.youtube_id != blank -%}
+          <menace-video-facade
+            data-video-id="{{ block.settings.youtube_id }}"
+            data-title="{{ block.settings.title | escape }}"
+            {{ block.shopify_attributes }}
+          >
+            <img
+              src="https://img.youtube.com/vi/{{ block.settings.youtube_id }}/hqdefault.jpg"
+              alt="{{ block.settings.title | escape }}"
+              loading="lazy"
+              width="480"
+              height="360"
+            >
+            <span class="menace-video-facade__play" aria-hidden="true">
+              {% render 'icon-play' %}
+            </span>
+            {%- if block.settings.title != blank -%}
+              <span class="menace-video-facade__title">{{ block.settings.title }}</span>
+            {%- endif -%}
+          </menace-video-facade>
+        {%- else -%}
+          <menace-video-facade class="menace-video-facade--placeholder" {{ block.shopify_attributes }}>
+            <span class="menace-video-facade__title">{{ block.settings.title | default: 'Coming soon' }}</span>
+          </menace-video-facade>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Menace animation gallery",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "The Animations"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "accent-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "clip",
+      "name": "Animation clip",
+      "settings": [
+        {
+          "type": "text",
+          "id": "youtube_id",
+          "label": "YouTube video ID",
+          "info": "The part after \"v=\" in the YouTube URL, e.g. dQw4w9WgXcQ. Leave blank to show a \"coming soon\" placeholder."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Menace animation gallery",
+      "blocks": [
+        { "type": "clip", "settings": { "title": "Animation 1" } },
+        { "type": "clip", "settings": { "title": "Animation 2" } },
+        { "type": "clip", "settings": { "title": "Animation 3" } },
+        { "type": "clip", "settings": { "title": "Animation 4" } },
+        { "type": "clip", "settings": { "title": "Animation 5" } },
+        { "type": "clip", "settings": { "title": "Animation 6" } },
+        { "type": "clip", "settings": { "title": "Animation 7" } },
+        { "type": "clip", "settings": { "title": "Animation 8" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
